@@ -1,0 +1,17 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{#######################################
+
+Purpose:
+Custom configuration for SONiC devices
+#########################################}
+{%for lacp_pc in lacp_pcs%}
+interface PortChannel {{lacp_pc}} mode active fallback
+{%endfor%}
+
+{# external ip in Vxlan vtep start#}
+{%if vtep_name is defined and loopback3_ip is defined%}
+interface vxlan {{vtep_name}}
+  external-ip {{ loopback3_ip.split('/')[0] }}
+  vni-downstream external
+{%endif%}
+{# end #}

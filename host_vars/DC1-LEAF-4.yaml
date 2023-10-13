@@ -1,0 +1,325 @@
+is_border_leaf: true
+lacp_pcs:
+  - 10
+  - 11
+  - 12
+  - 13
+loopback3_ip: 1.1.1.2/32
+mclag_member_pcs:
+  - lag: PortChannel10
+  - lag: PortChannel11
+  - lag: PortChannel12
+  - lag: PortChannel13
+sonic_bgp:
+  - bestpath:
+      as_path:
+        multipath_relax: true
+    bgp_as: '{{ bgp_asn }}'
+    router_id: '{{ bgp_router_id }}'
+  - bgp_as: '{{bgp_asn}}'
+    vrf_name: Vrf1
+  - bgp_as: '{{ bgp_asn }}'
+sonic_bgp_af:
+  - address_family:
+      afis:
+        - afi: ipv4
+          max_path:
+            ebgp: 16
+          redistribute:
+            - protocol: connected
+          safi: unicast
+        - advertise_all_vni: true
+          afi: l2vpn
+          safi: evpn
+          vnis:
+            - rt_in:
+                - auto
+                - 20101:101
+              rt_out:
+                - auto
+                - 10101:101
+              vni_number: 10101
+            - rt_in:
+                - auto
+                - 20102:102
+              rt_out:
+                - auto
+                - 10102:102
+              vni_number: 10102
+            - rt_in:
+                - auto
+                - 20103:103
+              rt_out:
+                - auto
+                - 10103:103
+              vni_number: 10103
+            - rt_in:
+                - auto
+                - 20201:201
+              rt_out:
+                - auto
+                - 10201:201
+              vni_number: 10201
+            - rt_in:
+                - auto
+                - 20202:202
+              rt_out:
+                - auto
+                - 10202:202
+              vni_number: 10202
+    bgp_as: '{{bgp_asn}}'
+  - address_family:
+      afis:
+        - afi: l2vpn
+          rd: '{{bgp_asn}}:1'
+          route_advertise_list:
+            - advertise_afi: ipv4
+          rt_in:
+            - auto
+            - '2000:1'
+          rt_out:
+            - auto
+            - '3000:1'
+          safi: evpn
+        - afi: ipv4
+          redistribute:
+            - protocol: connected
+          safi: unicast
+    bgp_as: '{{ bgp_asn }}'
+    vrf_name: Vrf1
+sonic_bgp_neighbors:
+  - bgp_as: '{{bgp_asn}}'
+    neighbors:
+      - neighbor: Eth1/54
+        peer_group: spine-leaf
+      - neighbor: Eth1/53
+        peer_group: spine-leaf
+    peer_group:
+      - '{{sonic_bgp_spineleaf_peergroup}}'
+      - '{{sonic_bgp_external_pg_entry}}'
+  - bgp_as: '{{bgp_asn}}'
+    neighbors:
+      - neighbor: 3.3.3.10
+        remote_as:
+          peer_as: 64627
+    vrf_name: Vrf1
+  - bgp_as: '{{bgp_asn}}'
+    neighbors:
+      - neighbor: 3.3.3.14
+        remote_as:
+          peer_as: 64627
+    vrf_name: Vrf1
+sonic_bgp_neighbors_af:
+  - bgp_as: '{{bgp_asn}}'
+    neighbors:
+      - address_family: '{{sonic_bgp_fabriclink_neighbors_aflist}}'
+        neighbor: Eth1/54
+      - address_family: '{{sonic_bgp_fabriclink_neighbors_aflist}}'
+        neighbor: Eth1/53
+  - bgp_as: '{{bgp_asn}}'
+    neighbors:
+      - address_family:
+          - activate: true
+            afi: ipv4
+            safi: unicast
+        neighbor: 3.3.3.10
+    vrf_name: Vrf1
+  - bgp_as: '{{bgp_asn}}'
+    neighbors:
+      - address_family:
+          - activate: true
+            afi: ipv4
+            safi: unicast
+        neighbor: 3.3.3.14
+    vrf_name: Vrf1
+sonic_config:
+  lines: []
+sonic_interfaces:
+  - description: '"Uplink"'
+    enabled: true
+    name: Eth1/1
+  - description: '"Uplink"'
+    enabled: true
+    name: Eth1/2
+  - description: '"Node-05_eth1-NDC1-1G-2"'
+    enabled: true
+    name: Eth1/3
+  - description: '"Node-06_eth1-NDC1-1G-2"'
+    enabled: true
+    name: Eth1/4
+  - description: '"Node-07_eth1-NDC1-1G-2"'
+    enabled: true
+    name: Eth1/5
+  - description: '"Node-08_eth1-NDC1-1G-2"'
+    enabled: true
+    name: Eth1/6
+  - description: '"Uplink to DC1-SPINE-2 Eth1/4"'
+    enabled: true
+    name: Eth1/53
+  - description: '"Uplink to DC1-SPINE-1 Eth1/4"'
+    enabled: true
+    name: Eth1/54
+  - description: '"MCLAG to DC1-LEAF-3 Eth1/55"'
+    enabled: true
+    name: Eth1/55
+  - description: '"MCLAG to DC1-LEAF-3 Eth1/56"'
+    enabled: true
+    name: Eth1/56
+  - description: router-id
+    name: '{{ loopback_inf0 }}'
+  - description: vtep
+    name: '{{ loopback_inf1 }}'
+  - description: Multisite
+    name: '{{ loopback_inf3 }}'
+  - description: '"LAG to Compute_2_Node-05_bond0"'
+    mtu: 9216
+    name: PortChannel10
+  - description: '"LAG to Compute_2_Node-06_bond0"'
+    mtu: 9216
+    name: PortChannel11
+  - description: '"LAG to Compute_2_Node-07_bond0"'
+    mtu: 9216
+    name: PortChannel12
+  - description: '"LAG to Compute_2_Node-08_bond0"'
+    mtu: 9216
+    name: PortChannel13
+sonic_l2_interfaces:
+  - name: Eth1/1
+    trunk:
+      allowed_vlans:
+        - vlan: 200
+  - name: Eth1/2
+    trunk:
+      allowed_vlans:
+        - vlan: 200
+  - name: PortChannel 10
+    trunk:
+      allowed_vlans:
+        - vlan: 201
+        - vlan: 202
+  - name: PortChannel 11
+    trunk:
+      allowed_vlans:
+        - vlan: 201
+        - vlan: 202
+  - name: PortChannel 12
+    trunk:
+      allowed_vlans:
+        - vlan: 201
+        - vlan: 202
+  - name: PortChannel 13
+    trunk:
+      allowed_vlans:
+        - vlan: 201
+        - vlan: 202
+  - name: PortChannel100
+    trunk:
+      allowed_vlans:
+        - vlan: 101
+        - vlan: 102
+        - vlan: 103
+        - vlan: 201
+        - vlan: 202
+        - vlan: 60
+sonic_l3_interfaces:
+  - ipv6:
+      enabled: true
+    name: Eth1/53
+  - ipv6:
+      enabled: true
+    name: Eth1/54
+  - ipv4:
+      addresses:
+        - address: '{{ loopback0_ip }}'
+    name: '{{ loopback_inf0 }}'
+  - ipv4:
+      addresses:
+        - address: '{{ loopback1_ip }}'
+    name: '{{ loopback_inf1 }}'
+  - ipv4:
+      addresses:
+        - address: '{{ loopback3_ip }}'
+    name: '{{ loopback_inf3 }}'
+  - ipv4:
+      addresses:
+        - address: 3.3.3.9/30
+    name: Vlan200
+sonic_lag_interfaces:
+  - members:
+      interfaces:
+        - member: Eth1/3
+    mode: lacp
+    name: PortChannel10
+  - members:
+      interfaces:
+        - member: Eth1/4
+    mode: lacp
+    name: PortChannel11
+  - members:
+      interfaces:
+        - member: Eth1/5
+    mode: lacp
+    name: PortChannel12
+  - members:
+      interfaces:
+        - member: Eth1/6
+    mode: lacp
+    name: PortChannel13
+  - members:
+      interfaces:
+        - member: Eth1/55
+        - member: Eth1/56
+    name: PortChannel100
+sonic_system:
+  anycast_address:
+    ipv4: true
+    mac_address: '{{ anycast_mac_address }}'
+  hostname: DC1-LEAF-4
+  interface_naming: standard
+sonic_vlans:
+  - vlan_id: 200
+  - vlan_id: 101
+  - vlan_id: 102
+  - vlan_id: 103
+  - vlan_id: 201
+  - vlan_id: 202
+  - vlan_id: 60
+sonic_vrf_interfaces:
+  - members:
+      interfaces:
+        - name: Vlan101
+        - name: Vlan60
+        - name: Vlan102
+        - name: Vlan103
+        - name: Vlan201
+        - name: Vlan202
+        - name: Vlan200
+    name: Vrf1
+sonic_vxlans:
+  - evpn_nvo: nvo1
+    name: vtep3
+    source_ip: '{{ loopback1_ip.split(''/'')[0] }}'
+    vlan_map:
+      - vlan: 101
+        vni: 10101
+      - vlan: 102
+        vni: 10102
+      - vlan: 103
+        vni: 10103
+      - vlan: 201
+        vni: 10201
+      - vlan: 202
+        vni: 10202
+      - vlan: 60
+        vni: 3000
+    vrf_map:
+      - vni: 3000
+        vrf: Vrf1
+vlans:
+  - 101
+  - 102
+  - 103
+  - 201
+  - 202
+vrfs:
+  - Vrf1

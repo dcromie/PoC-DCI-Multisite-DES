@@ -1,0 +1,133 @@
+ansible_httpapi_use_ssl: true
+ansible_httpapi_validate_certs: false
+ansible_network_os: dellemc.enterprise_sonic.sonic
+ansible_password: Dell1234!
+ansible_user: admin
+bgp_asn: '{{ host_data[inventory_hostname].bgp_asn }}'
+bgp_router_id: '{{ host_data[inventory_hostname].bgp_router_id }}'
+host_data:
+  DC1-LEAF-1:
+    bgp_asn: 64625
+    bgp_router_id: 10.0.2.1
+    loopback0_ip: 10.0.2.1/32
+    loopback1_ip: 1.0.1.1/32
+    mclag_peer_ip: 10.0.2.2
+    mgmt_gateway_ip: 192.168.1.1
+    mgmt_ip: 192.168.1.12/24
+    vtep_name: vtep1
+  DC1-LEAF-2:
+    bgp_asn: 64625
+    bgp_router_id: 10.0.2.2
+    loopback0_ip: 10.0.2.2/32
+    loopback1_ip: 1.0.1.1/32
+    mclag_peer_ip: 10.0.2.1
+    mgmt_gateway_ip: 192.168.1.1
+    mgmt_ip: 192.168.1.13/24
+    vtep_name: vtep1
+  DC1-LEAF-3:
+    bgp_asn: 64626
+    bgp_router_id: 10.0.2.3
+    loopback0_ip: 10.0.2.3/32
+    loopback1_ip: 1.0.1.2/32
+    loopback3_ip: 1.1.1.1/32
+    mclag_peer_ip: 10.0.2.4
+    mgmt_gateway_ip: 192.168.1.1
+    mgmt_ip: 192.168.1.14/24
+    vtep_name: vtep3
+  DC1-LEAF-4:
+    bgp_asn: 64626
+    bgp_router_id: 10.0.2.4
+    loopback0_ip: 10.0.2.4/32
+    loopback1_ip: 1.0.1.2/32
+    loopback3_ip: 1.1.1.2/32
+    mclag_peer_ip: 10.0.2.3
+    mgmt_gateway_ip: 192.168.1.1
+    mgmt_ip: 192.168.1.15/24
+    vtep_name: vtep3
+  DC1-SPINE-1:
+    bgp_asn: 64600
+    bgp_router_id: 10.0.1.1
+    loopback0_ip: 10.0.1.1/32
+    mgmt_gateway_ip: 192.168.1.1
+    mgmt_ip: 192.168.1.10/24
+  DC1-SPINE-2:
+    bgp_asn: 64600
+    bgp_router_id: 10.0.1.2
+    loopback0_ip: 10.0.1.2/32
+    mgmt_gateway_ip: 192.168.1.1
+    mgmt_ip: 192.168.1.11/24
+loopback0_ip: '{{ host_data[inventory_hostname].loopback0_ip }}'
+loopback_inf0: Loopback0
+loopback_inf1: Loopback1
+loopback_inf3: Loopback3
+mgmt_gateway_ip: '{{ host_data[inventory_hostname].mgmt_gateway_ip }}'
+mgmt_ip: '{{ host_data[inventory_hostname].mgmt_ip }}'
+sonic_bgp_external_pg_entry:
+  - advertisement_interval: 0
+    bfd:
+      enabled: true
+    capability:
+      extended_nexthop: true
+    name: external
+    remote_as:
+      peer_type: external
+    timers:
+      holdtime: 9
+      keepalive: 3
+  - activate: true
+    afi: ipv4
+    safi: unicast
+  - activate: true
+    afi: l2vpn
+    safi: evpn
+sonic_bgp_fabriclink_neighbors_aflist:
+  - activate: true
+    afi: ipv4
+    allowas_in:
+      value: 2
+    safi: unicast
+  - activate: true
+    afi: l2vpn
+    safi: evpn
+sonic_bgp_spineleaf_peergroup:
+  advertisement_interval: 5
+  bfd:
+    enabled: true
+  capability:
+    extended_nexthop: true
+  name: spine-leaf
+  remote_as:
+    peer_type: external
+  timers:
+    holdtime: 9
+    keepalive: 3
+vlan_info:
+  60:
+    neigh_suppress: true
+    vni: 3000
+    vrf: Vrf1
+  101:
+    anycast_gateway_ip: 172.16.0.254/24
+    neigh_suppress: true
+    vni: 10101
+    vrf: Vrf1
+  102:
+    anycast_gateway_ip: 172.16.1.254/24
+    neigh_suppress: true
+    vni: 10102
+    vrf: Vrf1
+  103:
+    anycast_gateway_ip: 172.16.2.254/24
+    neigh_suppress: true
+    vni: 10103
+    vrf: Vrf1
+  201:
+    anycast_gateway_ip: 172.16.3.254/24
+    neigh_suppress: true
+    vni: 10201
+    vrf: Vrf1
+  202:
+    anycast_gateway_ip: 172.16.4.254/24
+    neigh_suppress: true
+    vni: 10202
+    vrf: Vrf1
