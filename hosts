@@ -1,0 +1,20 @@
+DC1-SPINE-1 ansible_host=192.168.1.10
+DC1-LEAF-1 ansible_host=192.168.1.12
+DC1-SPINE-2 ansible_host=192.168.1.11
+DC1-LEAF-2 ansible_host=192.168.1.13
+DC1-LEAF-3 ansible_host=192.168.1.14
+DC1-LEAF-4 ansible_host=192.168.1.15
+
+[spine]
+DC1-SPINE-1
+DC1-SPINE-2
+
+[leaf]
+DC1-LEAF-1
+DC1-LEAF-2
+DC1-LEAF-3
+DC1-LEAF-4
+
+[DC1:children]
+spine
+leaf
