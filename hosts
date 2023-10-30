@@ -44,3 +44,7 @@ dc1spine
 dc1leaf
 dc2spine
 dc2leaf
+
+[leaf:children]
+dc1leaf
+dc2leaf
