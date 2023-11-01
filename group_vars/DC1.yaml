@@ -95,7 +95,7 @@ sonic_bgp_spineleaf_peergroup:
     enabled: true
   capability:
     extended_nexthop: true
-- name: spine-leaf
+  name: spine-leaf
   remote_as:
     peer_type: external
   timers:
