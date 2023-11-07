@@ -74,12 +74,14 @@ sonic_bgp_external_pg_entry:
     timers:
       holdtime: 9
       keepalive: 3
-  - activate: true
-    afi: ipv4
-    safi: unicast
-  - activate: true
-    afi: l2vpn
-    safi: evpn
+    address_family:
+     afis:
+      - activate: true
+        afi: ipv4
+        safi: unicast
+      - activate: true
+        afi: l2vpn
+        safi: evpn
 sonic_bgp_fabriclink_neighbors_aflist:
   - activate: true
     afi: ipv4
