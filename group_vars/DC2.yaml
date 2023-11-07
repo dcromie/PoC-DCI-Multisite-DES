@@ -63,7 +63,7 @@ loopback_inf3: Loopback3
 mgmt_gateway_ip: '{{ host_data[inventory_hostname].mgmt_gateway_ip }}'
 mgmt_ip: '{{ host_data[inventory_hostname].mgmt_ip }}'
 sonic_bgp_external_pg_entry:
-  - advertisement_interval: 0
+    advertisement_interval: 0
     bfd:
       enabled: true
     capability:
