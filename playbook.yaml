@@ -1,3 +1,4 @@
+- hosts: DC1
   connection: httpapi
   gather_facts: false
   collections:
