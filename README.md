@@ -26,7 +26,10 @@ Walking through this example of how to leverage the new Multi-Site DCI functiona
 ## 📋 Requirements
 
   * GNS3 / EVE-NG virtual environment or physical hardware
-  * Dell Enterprise SONiC 4.0 or newer (virtual image for virtual environment or Enterprise-licensed version for hardware) 
+  * Dell Enterprise SONiC 4.0 or newer (virtual image for virtual environment or Enterprise-licensed version for hardware)
+  * Ansible Core 2.12.10 or later.
+  * The latest version of the SONiC collection from Ansible Galaxy:
+		  - $ ansible-galaxy collection install dellemc.enterprise_sonic
 
 
 ## 👏 How to Contribute
