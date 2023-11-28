@@ -15,6 +15,7 @@ Welcome! In this proof-of-concept we'll be looking at the new Multi-Site DCI fun
 
 - [Description and Objective](#-description-and-objective)
 - [Requirements](#-requirements)
+- [Network Diagram] (#-network-diagram)
 - [How to Contribute](#-how-to-contribute)
 
 
@@ -30,7 +31,7 @@ Walking through this example of how to leverage the new Multi-Site DCI functiona
   * Ansible Core 2.12.10 or later.
   * The latest version of the SONiC collection from Ansible Galaxy:
 		  - $ ansible-galaxy collection install dellemc.enterprise_sonic
-
+## Network Diagram
 
 ## 👏 How to Contribute
 
