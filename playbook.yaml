@@ -40,7 +40,7 @@
     - name: Create Vlans
       sonic_vlans:
         config: '{{sonic_vlans}}'
-      tags: skip
+      tags: vlans
       when: sonic_vlans is defined and sonic_vlans
     
     - name: Create LAG Interfaces
@@ -51,7 +51,7 @@
     - name: Create Interfaces
       sonic_interfaces:
         config: '{{sonic_interfaces}}'
-      tags: skip2
+      tags: interfaces
       when: sonic_interfaces is defined and sonic_interfaces
     
     - name: Create L2 Interfaces
@@ -67,6 +67,7 @@
     - name: Create L3 Interfaces
       sonic_l3_interfaces:
         config: '{{sonic_l3_interfaces}}'
+      tags: l3
       when: sonic_l3_interfaces is defined and sonic_l3_interfaces
     
     - name: Create MCLAG
