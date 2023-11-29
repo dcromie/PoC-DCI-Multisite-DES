@@ -51,7 +51,7 @@
     - name: Create Interfaces
       sonic_interfaces:
         config: '{{sonic_interfaces}}'
-      tags: skip
+      tags: skip2
       when: sonic_interfaces is defined and sonic_interfaces
     
     - name: Create L2 Interfaces
