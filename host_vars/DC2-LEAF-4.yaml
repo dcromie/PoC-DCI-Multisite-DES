@@ -267,8 +267,8 @@ sonic_lag_interfaces:
     name: PortChannel13
   - members:
       interfaces:
-        - member: Eth1/55
-        - member: Eth1/56
+        - member: Eth1/51
+        - member: Eth1/52
     name: PortChannel100
 sonic_system:
   anycast_address:
