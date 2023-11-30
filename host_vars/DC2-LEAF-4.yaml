@@ -159,12 +159,12 @@ sonic_interfaces:
   - description: '"Uplink to DC2-SPINE-1 Eth1/4"'
     enabled: true
     name: Eth1/54
-  - description: '"MCLAG to DC2-LEAF-3 Eth1/55"'
+  - description: '"MCLAG to DC2-LEAF-3 Eth1/51"'
     enabled: true
-    name: Eth1/55
-  - description: '"MCLAG to DC2-LEAF-3 Eth1/56"'
+    name: Eth1/51
+  - description: '"MCLAG to DC2-LEAF-3 Eth1/52"'
     enabled: true
-    name: Eth1/56
+    name: Eth1/52
   - description: router-id
     name: '{{ loopback_inf0 }}'
   - description: vtep
