@@ -81,12 +81,12 @@ sonic_interfaces:
   - description: '"Uplink to DC1-SPINE-1 Eth1/2"'
     enabled: true
     name: Eth1/54
-  - description: '"MCLAG to DC1-LEAF-1 Eth1/51"'
+  - description: '"MCLAG to DC1-LEAF-1 Eth1/55"'
     enabled: true
-    name: Eth1/51
-  - description: '"MCLAG to DC1-LEAF-1 Eth1/52"'
+    name: Eth1/55
+  - description: '"MCLAG to DC1-LEAF-1 Eth1/56"'
     enabled: true
-    name: Eth1/52
+    name: Eth1/56
   - description: router-id
     name: '{{ loopback_inf0 }}'
   - description: vtep
@@ -175,8 +175,8 @@ sonic_lag_interfaces:
     name: PortChannel13
   - members:
       interfaces:
-        - member: Eth1/51
-        - member: Eth1/52
+        - member: Eth1/55
+        - member: Eth1/56
     name: PortChannel100
 sonic_system:
   anycast_address:
