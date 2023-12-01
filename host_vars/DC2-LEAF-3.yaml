@@ -161,10 +161,10 @@ sonic_interfaces:
     name: Eth1/54
   - description: '"MCLAG to DC2-LEAF-4 Eth1/55"'
     enabled: true
-    name: Eth1/51
+    name: Eth1/55
   - description: '"MCLAG to DC2-LEAF-4 Eth1/56"'
     enabled: true
-    name: Eth1/52
+    name: Eth1/56
   - description: router-id
     name: '{{ loopback_inf0 }}'
   - description: vtep
