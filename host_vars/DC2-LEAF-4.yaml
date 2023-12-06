@@ -76,10 +76,10 @@ sonic_bgp_af:
             - advertise_afi: ipv4
           rt_in:
             - auto
-            - '1000:1'
+            - '2000:1'
           rt_out:
             - auto
-            - '3000:1'
+            - '2000:1'
           safi: evpn
         - afi: ipv4
           redistribute:
