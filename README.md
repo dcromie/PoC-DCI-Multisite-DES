@@ -36,6 +36,8 @@ Walking through this example of how to leverage the new Multi-Site DCI functiona
 ![image](https://github.com/dcromie/PoC-DCI-Multisite-DES/assets/75340463/2cdc0a66-45d3-46fd-a319-e179ab452ad9)
 ![image](https://github.com/dcromie/PoC-DCI-Multisite-DES/assets/75340463/d70176df-d95f-4fa5-bfb8-832ea9e36d84)
 
+## 🔍 Verification Commands
+
 
 ## 👏 How to Contribute
 
