@@ -37,7 +37,14 @@ Walking through this example of how to leverage the new Multi-Site DCI functiona
 ![image](https://github.com/dcromie/PoC-DCI-Multisite-DES/assets/75340463/d70176df-d95f-4fa5-bfb8-832ea9e36d84)
 
 ## 🔍 Verification Commands
-
+   * show vxlan tunnel - On the Border Leafs, verify the 'Internal' and 'External' tunnels are up between VTEPs.
+   * show vxlan vlanvnimap - Output shows the VLAN to VNI mapping in the data center. This mapping is defined with 
+     different VNI values for the same VLANs in data center1 and 2. Check this show command on the Border Leafs
+   * show evpn rmac vni all - Output shows the remote MAC address reachable from Border Leafs. The values indicate remote mac 
+     addresses of remote BLs' router MACs. Check out how it is in all border routers.
+   * show ip route vrf Vrf1 - Verify routes learned in Vrfs.
+   * show bgp l2vpn evpn route type macip - Display Type 2 routes learned.
+   * show bgp l2vpn evpn route type prefix - Dis[play Type 5 routes.
 
 ## 👏 How to Contribute
 
