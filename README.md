@@ -16,6 +16,7 @@ Welcome! In this proof-of-concept we'll be looking at the new Multi-Site DCI fun
 - [Description and Objective](#-description-and-objective)
 - [Requirements](#-requirements)
 - [Network Diagram](#-network-diagram)
+- [Verification Commands](#-verfication-commands)
 - [How to Contribute](#-how-to-contribute)
 
 
