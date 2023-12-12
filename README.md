@@ -32,6 +32,8 @@ Walking through this example of how to leverage the new Multi-Site DCI functiona
   * The latest version of the SONiC collection from Ansible Galaxy:
 		  - $ ansible-galaxy collection install dellemc.enterprise_sonic
 ## 🗺️ Network Diagram
+![image](https://github.com/dcromie/PoC-DCI-Multisite-DES/assets/75340463/2cdc0a66-45d3-46fd-a319-e179ab452ad9)
+
 
 ## 👏 How to Contribute
 
