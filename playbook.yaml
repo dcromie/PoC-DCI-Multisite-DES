@@ -1,4 +1,4 @@
-- hosts: DC2
+- hosts: DCS
   connection: httpapi
   gather_facts: false
   collections:
