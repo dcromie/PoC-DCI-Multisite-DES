@@ -188,6 +188,7 @@ sonic_l2_interfaces:
     trunk:
       allowed_vlans:
         - vlan: 200
+        - vlan: 300
   - name: Eth1/2
     trunk:
       allowed_vlans:
@@ -228,6 +229,9 @@ sonic_l3_interfaces:
   - ipv6:
       enabled: true
     name: Eth1/54
+  - ipv6:
+      enabled: true
+    name: Vlan300
   - ipv4:
       addresses:
         - address: '{{ loopback0_ip }}'
@@ -284,6 +288,7 @@ sonic_vlans:
   - vlan_id: 201
   - vlan_id: 202
   - vlan_id: 60
+  - vlan_id: 300
 sonic_vrf_interfaces:
   - members:
       interfaces:
