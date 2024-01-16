@@ -94,6 +94,8 @@ sonic_bgp_neighbors:
         peer_group: spine-leaf
       - neighbor: Eth1/53
         peer_group: spine-leaf
+      - neighbor: Vlan300
+        remote_as: external
     peer_group:
       - '{{sonic_bgp_spineleaf_peergroup}}'
       - '{{sonic_bgp_external_pg_entry}}'
