@@ -119,6 +119,8 @@ sonic_bgp_neighbors_af:
         neighbor: Eth1/54
       - address_family: '{{sonic_bgp_fabriclink_neighbors_aflist}}'
         neighbor: Eth1/53
+      - address_family: '{{sonic_bgp_fabriclink_neighbors_aflist}}
+        neighbor: Vlan300
   - bgp_as: '{{bgp_asn}}'
     neighbors:
       - address_family:
