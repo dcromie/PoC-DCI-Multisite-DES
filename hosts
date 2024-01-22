@@ -1,25 +1,25 @@
 DC1-SPINE-1 ansible_host=192.168.1.10
 DC1-LEAF-1 ansible_host=192.168.1.12
-DC1-SPINE-2 ansible_host=192.168.1.11
+#DC1-SPINE-2 ansible_host=192.168.1.11
 DC1-LEAF-2 ansible_host=192.168.1.13
 DC1-LEAF-3 ansible_host=192.168.1.14
-DC1-LEAF-4 ansible_host=192.168.1.15
+#DC1-LEAF-4 ansible_host=192.168.1.15
 DC2-SPINE-1 ansible_host=192.168.1.20
 DC2-LEAF-1 ansible_host=192.168.1.22
-DC2-SPINE-2 ansible_host=192.168.1.21
-DC2-LEAF-2 ansible_host=192.168.1.23
+#DC2-SPINE-2 ansible_host=192.168.1.21
+#DC2-LEAF-2 ansible_host=192.168.1.23
 DC2-LEAF-3 ansible_host=192.168.1.24
-DC2-LEAF-4 ansible_host=192.168.1.25
+#DC2-LEAF-4 ansible_host=192.168.1.25
 
 [dc1spine]
 DC1-SPINE-1
-DC1-SPINE-2
+#DC1-SPINE-2
 
 [dc1leaf]
 DC1-LEAF-1
 DC1-LEAF-2
 DC1-LEAF-3
-DC1-LEAF-4
+#DC1-LEAF-4
 
 [DC1:children]
 dc1spine
@@ -27,13 +27,13 @@ dc1leaf
 
 [dc2spine]
 DC2-SPINE-1
-DC2-SPINE-2
+#DC2-SPINE-2
 
 [dc2leaf]
 DC2-LEAF-1
-DC2-LEAF-2
+#DC2-LEAF-2
 DC2-LEAF-3
-DC2-LEAF-4
+#DC2-LEAF-4
 
 [DC2:children]
 dc2spine
