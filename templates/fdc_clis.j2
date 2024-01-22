@@ -16,6 +16,13 @@ interface {{intf.name}}
 {%endif%}
 #######################################}
 
+{%if vtep_name is defined and loopback3_ip is defined%}
+router bgp {{ bgp_asn }}
+ neighbor interface Vlan300
+  address-family l2vpn evpn
+   fabric-external
+{% endif %}
+
 {%if mgmt_ip is defined and mgmt_ip and mgmt_gateway_ip%}
 interface Management 0
   ip address {{mgmt_ip}} gwaddr {{mgmt_gateway_ip}}
