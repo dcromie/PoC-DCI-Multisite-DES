@@ -111,6 +111,7 @@
       when: sonic_aaa is defined and sonic_aaa
     
     - name: Push Configurations For Custom CLIs
+      tags: CLI
       vars:
         ansible_connection: network_cli
       sonic_config:
